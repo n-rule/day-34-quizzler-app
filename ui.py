@@ -4,8 +4,6 @@ from quiz_brain import QuizBrain
 THEME_COLOR = "#375362"
 
 
-
-
 class QuizInterface:
 
     def __init__(self, quiz_brain: QuizBrain):
@@ -23,7 +21,6 @@ class QuizInterface:
         self.question_text = self.canvas.create_text(150, 125, text="Some stupid text", width=250,
                                                      font=("Arial", 20, "italic"))
 
-
         true_image = PhotoImage(file='images/true.png')
         self.true_button = Button(image=true_image, highlightthickness=0, command=self.true_pressed)
         self.true_button.grid(column='0', row='3', padx='20', pady='20')
@@ -36,8 +33,6 @@ class QuizInterface:
 
         self.window.mainloop()
 
-
-
     def get_next_question(self):
 
         self.canvas.config(bg='white')
@@ -48,16 +43,13 @@ class QuizInterface:
         else:
             self.canvas.itemconfig(self.question_text, text='THE END')
 
-
     def true_pressed(self):
         is_right = self.quiz.check_answer("True")
         self.give_feedback(is_right)
 
-
     def false_pressed(self):
         is_right = self.quiz.check_answer("False")
         self.give_feedback(is_right)
-
 
     def give_feedback(self, right_answer):
         if right_answer:
@@ -65,9 +57,3 @@ class QuizInterface:
         else:
             self.canvas.config(bg='red')
         self.window.after(1111, func=self.get_next_question)
-
-
-
-
-
-
